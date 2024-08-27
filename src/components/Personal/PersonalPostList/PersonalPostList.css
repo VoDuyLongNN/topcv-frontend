@@ -1,0 +1,256 @@
+.post-list-container h2 {
+   margin-bottom: 30px;
+}
+
+.post-list-row {
+   display: flex;
+   gap: 20px;
+   justify-content: space-between;
+   margin-bottom: 40px;
+}
+
+.post-list-title {
+   width: 100%;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   font-size: 18px;
+   font-weight: bold;
+   padding-bottom: 10px;
+   text-transform: capitalize;
+   color: var(--primary-green);
+}
+
+.post-list-col {
+   position: relative;
+   flex: 1;
+   /* border: 1px solid #ced4da; */
+   padding: 10px;
+   border-radius: 5px;
+   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+   transition: all linear 0.3s;
+}
+
+.post-list-col:hover {
+   /* border: 1px solid var(--primary-green); */
+   cursor: pointer;
+   transform: translateY(-10px);
+}
+
+.post-list-address-time {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   margin-bottom: 20px;
+}
+
+.post-list-address-time .address,
+.post-list-address-time .time {
+   display: flex;
+   align-items: center;
+   font-size: 12px;
+   background-color: #efebeb;
+   padding: 5px;
+   border-radius: 5px;
+}
+
+.post-list-address-time .icon {
+   font-size: 15px;
+}
+
+.post-list-address-time .address,
+.post-list-address-time .time,
+.post-list-address-time .icon {
+   color: #5c5c5c;
+   margin: 0;
+}
+
+.post-list-address-time span {
+   padding-left: 5px;
+}
+
+.post-list-job {
+   margin-bottom: 10px;
+   color: #000;
+}
+
+.post-list-job .fixed {
+   font-weight: bold;
+}
+
+.post-list-desc {
+   width: 100%;
+   height: 57px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   text-align: justify;
+   color: #5c5c5c;
+   font-size: 14px;
+}
+
+.post-list-status {
+   position: absolute;
+   top: 0;
+   right: 10px;
+   padding-top: 10px;
+   font-size: 14px;
+   display: flex;
+   justify-content: end;
+}
+
+.active {
+   background-color: var(--primary-green);
+   color: #fff;
+   padding: 5px 10px;
+   border-radius: 5px;
+}
+
+.unactive {
+   background-color: #FFC700;
+   color: #fff;
+   padding: 5px 10px;
+   border-radius: 5px;
+}
+
+.post-list-date > div{
+   color: #5c5c5c;
+   font-size: 12px;
+   background-color: #efebeb;
+   padding: 5px;
+   border-radius: 5px;
+   display: inline-block;
+}
+
+.post-list-date {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.pagination {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.pagination button {
+   width: 40px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #fff;
+   border: 1px solid var(--primary-green);
+   color: var(--primary-green);
+   padding: 5px;
+   cursor: pointer;
+   margin: 0 10px;
+   border-radius: 50%;
+}
+
+.pagination button:hover {
+   background-color: var(--primary-green);
+   color: #fff;
+}
+
+.post-list-bottom {
+   display: flex;
+   padding-top: 10px;
+   justify-content: space-between;
+}
+
+.post-list-action button {
+   border: none;
+   border-radius: 5px;
+   padding: 5px 10px;
+   margin-left: 10px;
+   color: #fff;
+   cursor: pointer;
+}
+
+#post-list-edit {
+   background-color: #007bff;
+}
+
+#post-list-delete {
+   background-color: #dc2f2f;
+}
+
+.post-list-filter {
+   display: inline-flex;
+   align-items: center;
+   border: 1px solid var(--primary-green);
+   padding: 10px;
+   border-radius: 5px;
+   margin-bottom: 20px;
+   color: var(--primary-green);
+}
+
+.post-list-filter select {
+   border: none;
+   outline: none;
+   margin-left: 20px;
+   color: var(--primary-green);
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.post-list-filter select.value {
+   border-left: 2px solid var(--primary-green);
+   padding-left: 10px;
+   min-width: 165px;
+}
+
+.post-list-filter select option {
+   padding: 10px 5px;
+   cursor: pointer;
+}
+
+.post-list-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 900;
+}
+
+.post-list-overlay-content {
+   position: relative;
+   background: white;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   max-width: 90%;
+   max-height: 90%;
+   overflow-y: auto;
+   overflow-x: hidden;
+}
+
+.post-list-overlay-content .icon {
+   position: absolute;
+   top: 20px;
+   right: 10px;
+   font-size: 40px;
+   color: #dc2f2f;
+   cursor: pointer;
+}
+
+.react-confirm-alert-overlay {
+   background: rgba(0, 0, 0, 0.5);
+}
+
+.react-confirm-alert-body>h1 {
+   padding-bottom: 20px;
+}
+
+.react-confirm-alert-button-group>button.yes {
+   background-color: #dc2f2f;
+}

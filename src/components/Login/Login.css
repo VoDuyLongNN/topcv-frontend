@@ -1,0 +1,130 @@
+.login-container {
+   width: 500px;
+   margin: 50px auto;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   background-color: #ffffff;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+   text-align: center;
+   color: #28a745;
+   margin-bottom: 10px;
+}
+
+.login-container p {
+   text-align: center;
+   color: #6c757d;
+   margin-bottom: 30px;
+}
+
+.form-group {
+   margin-bottom: 20px;
+}
+
+.form-group label {
+   display: block;
+   margin-bottom: 5px;
+   color: #495057;
+}
+
+.input-wrapper {
+   position: relative;
+}
+
+.input-wrapper .icon-form {
+   position: absolute;
+   top: 50%;
+   left: 10px;
+   transform: translateY(-50%);
+   color: #28a745;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+   width: 100%;
+   padding: 10px 10px 10px 40px;
+   border: 1px solid #ced4da;
+   border-radius: 5px;
+   font-size: 16px;
+   box-sizing: border-box;
+   transition: border-color 0.3s;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+   border-color: #28a745;
+   outline: none;
+}
+
+.login-button {
+   width: 100%;
+   padding: 10px;
+   background-color: #28a745;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 16px;
+   margin-top: 20px;
+}
+
+.login-button:hover {
+   background-color: #218838;
+}
+
+.message {
+   margin-top: 20px;
+   padding: 10px;
+   border-radius: 5px;
+   font-size: 16px;
+   text-align: center;
+}
+
+.message.success {
+   color: #28a745;
+   background-color: #d4edda;
+   border: 1px solid #c3e6cb;
+   margin-bottom: 0;
+}
+
+.message.error {
+   color: #dc3545;
+   background-color: #f8d7da;
+   border: 1px solid #f5c6cb;
+   margin-bottom: 0;
+}
+
+.has-error label {
+   color: #dc3545; 
+}
+
+.has-error .input-wrapper input,
+.has-error .input-wrapper .icon-form {
+   border-color: #dc3545; 
+   color: #dc3545;
+}
+
+p.error-message {
+   color: #dc3545; 
+   font-size: 14px;
+   margin-top: 5px;
+   margin-bottom: 0;
+   text-align: left;
+}
+
+.register-redirect{
+   color: #6c757d;
+   padding-top: 20px;
+}
+
+.register-redirect span{
+   padding-right: 10px;
+}
+
+.register-redirect a{
+   text-decoration: none;
+   color: #218838;
+}

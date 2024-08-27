@@ -1,0 +1,135 @@
+.header-container {
+   position: sticky;
+   top: 0;
+   z-index: 100;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: white;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-section {
+   display: flex;
+   align-items: center;
+}
+
+.logo {
+   height: 40px;
+}
+
+.slogan {
+   margin-left: 10px;
+   font-size: 14px;
+   color: #666;
+}
+
+.navigation {
+   display: flex;
+   gap: 70px;
+}
+
+.navigation a {
+   text-decoration: none;
+   color: #333;
+   font-weight: 500;
+}
+
+.navigation a:hover {
+   color: var(--primary-green);
+}
+
+.actions {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.employer-section {
+   font-size: 14px;
+   color: #666;
+}
+
+.employer-section a {
+   color: #007bff;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.employer-section a:hover {
+   text-decoration: underline;
+}
+
+.icons {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.icon {
+   color: var(--primary-green);
+   margin: 0 10px;
+   cursor: pointer;
+}
+
+.drop-down {
+   margin: 0;
+}
+
+.profile {
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   cursor: pointer !important;
+}
+
+.profile img {
+   width: 30px !important;
+   height: 30px !important;
+   border-radius: 50% !important;
+   object-fit: cover !important;
+   border: 1px solid #9f9f9f;
+}
+
+.profile-arrow {
+   font-size: 14px;
+   color: #333;
+}
+
+.auth-buttons {
+   display: flex;
+   gap: 10px;
+}
+
+.btn-register,
+.btn-login {
+   padding: 10px 15px;
+   font-size: 16px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.btn-register {
+   background-color: #28a745;
+   color: white;
+}
+
+.btn-login {
+   background-color: inherit;
+   color: var(--primary-green);
+   border: 1px solid var(--primary-green);
+}
+
+.btn-register:hover{
+   opacity: 0.9;
+}
+
+.btn-login:hover{
+   background-color: #e8f3ea;
+} 
+
+.navigation a.choice{
+   color: var(--primary-green);
+}
