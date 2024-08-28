@@ -64,11 +64,7 @@ const PersonalPostList = ({
          .catch(error => console.error('Error fetching posts:', error));
 
       // get api provine
-      axios.get('http://localhost:8080/province/get-all', {
-         headers: {
-            'Authorization': `Bearer ${token}`,
-         }
-      })
+      axios.get('http://localhost:8080/public/province/get-all')
          .then(response => {
             if (response.data.status === 'OK') {
                setProvinces(response.data.data);
@@ -102,11 +98,7 @@ const PersonalPostList = ({
       setCriteria(selectedCriteria);
 
       if (selectedCriteria === 'province') {
-         axios.get('http://localhost:8080/province/get-all', {
-            headers: {
-               'Authorization': `Bearer ${token}`,
-            }
-         })
+         axios.get('http://localhost:8080/public/province/get-all')
             .then(response => {
                const provinces = response.data.data;
                setValues(provinces.map(province => ({ name: province.name })));

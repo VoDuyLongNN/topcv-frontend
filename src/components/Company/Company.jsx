@@ -9,6 +9,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import CompanyInfor from './CompanyInfor/CompanyInfor';
+import CompanyPost from './CompanyPost/CompanyPost';
 
 
 const Company = () => {
@@ -36,6 +37,8 @@ const Company = () => {
    useEffect(() => {
       if (location.pathname === '/company/profile') {
          setActiveSection('company');
+      } else if (location.pathname === '/company/create-post') {
+         setActiveSection('create-post');
       } else {
          navigate('/company/profile');
          setActiveSection('company');
@@ -46,9 +49,11 @@ const Company = () => {
       setActiveSection(section)
 
       if (section === 'company') {
-         navigate('/company/profile')
+         navigate('/company/profile');
+      } else if (section === 'create-post') {
+         navigate('/company-create-post');
       } else {
-         navigate('/company/profile')
+         navigate('/company/profile');
       }
    }
 
@@ -104,13 +109,28 @@ const Company = () => {
                         setFormData={setFormData}
                      />
                   )}
+
+                  {activeSection === 'create-post' && (
+                     <CompanyPost
+                        isUpdating={isUpdating}
+                        setIsUpdating={setIsUpdating}
+                        showMessage={showMessage}
+                        setShowMessage={setShowMessage}
+                        messageType={messageType}
+                        setMessageType={setMessageType}
+                        message={message}
+                        setMessage={setMessage}
+                        formData={formData}
+                        setFormData={setFormData}
+                     />
+                  )}
                </div>
 
                <div className="container-item-right">
                   <Link
                      to='profile'
                      onClick={() => handleSectionChange('company')}
-                     className={activeSection === 'personal' ? 'active-link' : ''}
+                     className={activeSection === 'company' ? 'active-link' : ''}
                   >
                      <ApartmentIcon />
                      Thông tin công ty
@@ -122,7 +142,9 @@ const Company = () => {
                      Đổi mật khẩu
                   </Link>
                   <Link
-
+                     to='create-post'
+                     onClick={() => handleSectionChange('create-post')}
+                     className={activeSection === 'create-post' ? 'active-link' : ''}
                   >
                      <PostAddIcon />
                      Đăng bài

@@ -25,11 +25,7 @@ const PersonalPost = ({
    const token = getToken();
 
    useEffect(() => {
-      axios.get('http://localhost:8080/province/get-all', {
-         headers: {
-            'Authorization': `Bearer ${token}`,
-         }
-      })
+      axios.get('http://localhost:8080/public/province/get-all')
          .then(response => {
             if (response.data.status === 'OK') {
                setProvinces(response.data.data);

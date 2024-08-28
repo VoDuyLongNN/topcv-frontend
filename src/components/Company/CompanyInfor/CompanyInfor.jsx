@@ -70,16 +70,106 @@ const CompanyInfor = ({
       setIsSaveEnabled(true);
    };
 
-   const handleInputChange = (e) => {
-      const {name, value} = e.target;
+   const handleCancelClick = (e) => {
+      e.preventDefault();
+      window.location.reload();
+   };
 
-      if(name === 'companyName') {
-         if(value.length <= 0 || value.length > 30) {
-            setErrors({...errors, companyName: 'Tên công ty không được bỏ trống, tối đa 30 kí tự.'});
+   const handleSaveClick = async (e) => {
+      e.preventDefault();
+      setIsUpdating(true);
+
+      const company = {
+         companyName: formData.companyName,
+         industry: formData.industry,
+         location: formData.location,
+         establishment: formData.establishment,
+         website: formData.website,
+         description: formData.description
+      };
+
+      try {
+         const token = getToken();
+         const response = await axios.put('http://localhost:8080/company/update', company, {
+            headers: {
+               'Authorization': `Bearer ${token}`,
+               'Content-Type': 'application/json'
+            }
+         });
+
+         setIsUpdating(false);
+
+         if (response.status === 200) {
+            setMessage("Cập nhập thành công!");
+            setMessageType('success');
+            setShowMessage(true)
+            setIsEditing(false);
+            setIsSaveEnabled(false);
+         } else {
+            setMessage(`Cập nhập thất bại, ${response.data.message}`);
+            setMessageType('error');
+            setShowMessage(true);
+         }
+      } catch (err) {
+         setIsUpdating(false);
+         setMessage(err.response.data.message);
+         setMessageType('error');
+         setShowMessage(true);
+      }
+      setTimeout(() => {
+         setShowMessage(false);
+      }, 3000);
+   }
+
+   const handleInputChange = (e) => {
+      const { name, value } = e.target;
+
+      if (name === 'companyName') {
+         if (value.length <= 0 || value.length > 30) {
+            setErrors({ ...errors, companyName: 'Tên công ty không được bỏ trống, tối đa 30 kí tự.' });
             setIsSaveEnabled(false);
          } else {
             const newErrors = { ...errors };
             delete newErrors.companyName;
+            setErrors(newErrors);
+            setIsSaveEnabled(true);
+         }
+      }
+
+      if (name === 'location') {
+         if (value.length <= 0 || value.length > 30) {
+            setErrors({ ...errors, location: 'Địa chỉ không được bỏ trống, tối đa 30 kí tự.' });
+            setIsSaveEnabled(false);
+         } else {
+            const newErrors = { ...errors };
+            delete newErrors.location;
+            setErrors(newErrors);
+            setIsSaveEnabled(true);
+         }
+      }
+
+      if (name === 'establishment') {
+         const selectedDate = new Date(value);
+         const currentDate = new Date();
+
+         if (!value || selectedDate > currentDate) {
+            setErrors({ ...errors, establishment: 'Ngày sinh không hợp lệ. Không được để trống hoặc là ngày trong tương lai.' });
+            setIsSaveEnabled(false);
+         } else {
+            const newErrors = { ...errors };
+            delete newErrors.establishment;
+            setErrors(newErrors);
+            setIsSaveEnabled(true);
+         }
+      }
+
+      if (name === 'industry') {
+         if (value === '') {
+            setErrors({ ...errors, industry: 'Bạn phải chọn một ngành nghề.' });
+            setIsSaveEnabled(false);
+         } else {
+            const newErrors = { ...errors };
+            delete newErrors.industry;
             setErrors(newErrors);
             setIsSaveEnabled(true);
          }
@@ -117,14 +207,16 @@ const CompanyInfor = ({
                   onChange={handleInputChange}
                   disabled={!isEditing}
                />
+               {errors.companyName && <p className="error-message">{errors.companyName}</p>}
             </div>
 
             <div className={`container-item--form-col ${errors.industry ? 'has-error' : ''}`}>
                <label>Lĩnh vực hoạt động <span className='required'>(*)</span></label>
                <select
                   name="industry"
+                  id="industry"
                   value={formData.industry}
-                  onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+                  onChange={handleInputChange}
                   disabled={!isEditing}
                >
                   <option value="">Chọn ngành nghề</option>
@@ -134,6 +226,7 @@ const CompanyInfor = ({
                      </option>
                   ))}
                </select>
+               {errors.industry && <p className="error-message">{errors.industry}</p>}
             </div>
          </div>
 
@@ -144,8 +237,10 @@ const CompanyInfor = ({
                   type="text"
                   name="location"
                   value={formData.location}
+                  onChange={handleInputChange}
                   disabled={!isEditing}
                />
+               {errors.location && <p className="error-message">{errors.location}</p>}
             </div>
 
             <div className={`container-item--form-col ${errors.establishment ? 'has-error' : ''}`}>
@@ -153,10 +248,12 @@ const CompanyInfor = ({
                <input
                   type="date"
                   name="establishment"
+                  id="establishment"
                   value={formData.establishment}
+                  onChange={handleInputChange}
                   disabled={!isEditing}
-                  onChange={(e) => setFormData({ ...formData, establishment: e.target.value })}
                />
+               {errors.establishment && <p className="error-message">{errors.establishment}</p>}
             </div>
          </div>
 
@@ -186,10 +283,11 @@ const CompanyInfor = ({
 
          <div className="container-item--form-row" style={{ justifyContent: 'end' }}>
             <button id='btnEdit' className='btn-action' onClick={handleEditClick}>Sửa</button>
-            <button id='btnCancel' className='btn-action' >Hủy bỏ</button>
+            <button id='btnCancel' className='btn-action' onClick={handleCancelClick}>Hủy bỏ</button>
             <button
                id='btnSave'
                className={`btn-action ${isSaveEnabled ? 'enabled' : ''}`}
+               onClick={handleSaveClick}
                disabled={!isSaveEnabled}
             >
                Lưu

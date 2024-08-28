@@ -1,0 +1,27 @@
+.col-3 {
+   gap: 20px;
+   justify-content: space-between;
+}
+
+.col-3>div {
+   flex: 1;
+}
+
+.col-3 select {
+   min-width: 100%;
+}
+
+.col-1 > div {
+   width: 100%;
+}
+
+.col-1 > div select {
+   width: 100%;
+}
+
+.container-item--form h3 {
+   margin-top: 20px;
+   display: inline-block;
+   padding: 0 10px;
+   border-left: 5px solid var(--primary-green);
+}
