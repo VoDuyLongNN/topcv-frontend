@@ -13,7 +13,7 @@ const Filter = ({ onSortChange, onProvinceChange, onJobTypeChange, onSearchChang
 
    useEffect(() => {
       if (criteria === 'province') {
-         axios.get('http://localhost:8080/province/get-all')
+         axios.get('http://localhost:8080/public/province/get-all')
             .then(response => {
                const provinces = response.data.data;
                setValues(provinces.map(province => ({ name: province.name, code: province.code })));

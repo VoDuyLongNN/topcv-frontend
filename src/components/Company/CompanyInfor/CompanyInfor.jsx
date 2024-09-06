@@ -18,39 +18,6 @@ const CompanyInfor = ({
    const [jobCategories, setJobCategories] = useState([]);
 
    useEffect(() => {
-      const fetchCompanyData = async () => {
-         setIsUpdating(true);
-
-         try {
-            const token = getToken();
-
-            const response = await axios.get('http://localhost:8080/company/get', {
-               headers: {
-                  'Authorization': `Bearer ${token}`,
-               },
-            });
-
-            setFormData({
-               companyId: response.data.data.companyId || '',
-               companyName: response.data.data.companyName || '',
-               avt: response.data.data.avt || '',
-               industry: response.data.data.industry || '',
-               location: response.data.data.location || '',
-               establishment: response.data.data.establishment || '',
-               website: response.data.data.website || '',
-               description: response.data.data.description || '',
-               createDate: response.data.data.createDate || '',
-               updateTime: response.data.data.updateTime || '',
-               email: response.data.data.email || ''
-            })
-
-            setIsUpdating(false);
-         } catch (error) {
-            setError('Error fetching personal data');
-            setIsUpdating(false);
-         }
-      }
-
       const fetchJobCategories = async () => {
          try {
             const response = await axios.get('http://localhost:8080/job-category/get-all');
@@ -60,7 +27,6 @@ const CompanyInfor = ({
          }
       };
 
-      fetchCompanyData();
       fetchJobCategories();
    }, [])
 
